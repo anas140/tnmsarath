@@ -1,0 +1,356 @@
+#cssmenu {
+	width: 100%;
+	font-family: 'Conv_Myriad Pro Regular';
+	font-size: 13px;
+	text-align: left;
+	float: left;
+	position: absolute;
+	background-color: #585858;/*rgba(50,50,50,0.7)*/
+}
+#cssmenu > ul {
+	float: left;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	text-align: center;
+}
+#cssmenu > ul li#responsive-tab {
+  display: none;
+  /* Hide for large screens */
+
+}
+#cssmenu > ul li {
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	position: relative;
+	padding: 0 20px;
+	transition: all ease-in-out 0.5s;
+	-moz-transition: all ease-in-out 0.5s;
+	-ms-transition: all ease-in-out 0.5s;
+	-o-transition: all ease-in-out 0.5s;
+	-webkit-transition: all ease-in-out 0.5s;
+}
+#cssmenu > ul li:hover {
+	background-color: #0652a4;
+}
+#cssmenu > ul li.right {
+  float: right;
+}
+#cssmenu > ul li.has-sub {
+  position: relative;
+}
+#cssmenu > ul li.has-sub ul {
+	display: none;
+	width: 300px;
+	top: 100px;
+	left: 0;
+	position: absolute;
+	margin: 0;
+	padding: 10px 0 0;
+	list-style-type: none;
+	background: #0652a4;
+	border-top: 0 none;
+	transition: all ease-in-out 0.5s;
+	-moz-transition: all ease-in-out 0.5s;
+	-ms-transition: all ease-in-out 0.5s;
+	-o-transition: all ease-in-out 0.5s;
+	-webkit-transition: all ease-in-out 0.5s;
+}
+#cssmenu > ul li.has-sub:hover ul {
+	display: block;
+	top: 50px;
+}
+#cssmenu > ul li.has-sub ul li {
+	display: block;
+}
+#cssmenu > ul li.has-sub > a {
+  background-repeat: no-repeat;
+  background-position: 90% -95%;
+}
+#cssmenu > ul li.has-sub > a.active,
+#cssmenu > ul li.has-sub > a:hover {
+  background-position: 90% 195%;
+}
+#cssmenu > ul li a {
+	display: inline-block;
+	text-decoration: none;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.8px;
+	cursor: pointer;
+	line-height: 50px;
+	position: relative;
+	transition: all ease-in-out 0.5s;
+	-moz-transition: all ease-in-out 0.5s;
+	-ms-transition: all ease-in-out 0.5s;
+	-o-transition: all ease-in-out 0.5s;
+	-webkit-transition: all ease-in-out 0.5s;
+}
+
+#cssmenu > ul li a.active span,
+#cssmenu > ul li a:hover span {
+  color: #fff;
+}
+#cssmenu > ul li.has-sub ul li {
+	width: 100%;
+	padding: 10px 15px;
+	border-bottom: solid 1px rgba(255,255,255,0.10);
+}
+#cssmenu > ul li.has-sub ul li:hover {
+	background-color: #053364;
+}
+#cssmenu > ul li.has-sub ul li a {
+	width: 100%;
+	line-height: 22px;
+	font-size: 13px;
+	position: relative;
+	text-align: left;
+}
+#cssmenu > ul li ul li.sub-has-child {
+	position: relative;
+}
+#cssmenu > ul li ul li.sub-has-child ul {
+	display: none;
+	width: 280px;
+	top: 20px;
+	left: 100%;
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	background: #053364;
+	border-top: 0 none;
+	transition: all ease-in-out 0.5s;
+	-moz-transition: all ease-in-out 0.5s;
+	-ms-transition: all ease-in-out 0.5s;
+	-o-transition: all ease-in-out 0.5s;
+	-webkit-transition: all ease-in-out 0.5s;
+}
+#cssmenu > ul li ul li.sub-has-child:hover ul {
+	display: block !important;
+	top: 0px;
+}
+
+#cssmenu > ul li ul li.sub-has-child:last-child ul {
+	top: inherit;
+	bottom: 0;
+}
+
+#cssmenu > ul li.has-sub:hover ul li.sub-has-child ul {
+	display: none;
+}
+#cssmenu > ul li ul li.sub-has-child ul li {
+	display: block;
+}
+#cssmenu > ul li ul li.sub-has-child ul li:hover {
+	background-color: #03264c;
+}
+@media (max-width: 840px) {
+#cssmenu > ul {
+	width: 100vw;
+	background-color: #fff;
+	position: absolute;
+	top: 45px;
+	left: 0;
+	right: 0;
+	*z-index: 1;
+  -webkit-animation-name: slideOutDown;
+  animation-name: slideOutDown;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+}
+#cssmenu > ul.is-clicked {
+	min-height: calc(100vh - 75px);
+}
+#cssmenu > ul li#responsive-tab {
+	display: block;
+	width: 100%;
+	height: 45px;
+	float: left;
+	position: absolute;
+	top: -45px;
+	left: 0%;
+	padding: 0px 5%;
+}
+#cssmenu > ul li#responsive-tab a {
+	background: url(../images/menu.png) no-repeat;
+	background-position: 100% -50%;
+	font-family: 'Conv_Myriad Pro Semibold';
+	font-size: 16px;
+	line-height: 45px;
+	text-transform: uppercase;
+	text-align: left;
+	color: #053364;
+	padding: 0;
+	border-bottom: none;
+	cursor: pointer;
+}
+#cssmenu > ul li#responsive-tab:hover {
+	background-color: #fff;
+}
+
+#cssmenu > ul li {
+	display: none;
+	margin: 0;
+	padding: 0px;
+}
+
+#cssmenu > ul li a {
+	width: 100%;
+	display: block;
+	padding: 10px 20px;
+	text-decoration: none;
+	line-height: 25px;
+	font-size: 15px;
+	text-align: left;
+	color: #414042;
+	border-bottom: solid 1px rgba(0,0,0,0.07);
+	-webkit-animation-name: slideInLeft;
+	animation-name: slideInLeft;
+	-webkit-animation-duration: 0.5s;
+	animation-duration: 0.5s;
+}
+#cssmenu > ul li:last-child a {
+	border-bottom: none;
+}
+#cssmenu > ul li.right {
+	float: none;
+}
+
+#cssmenu > ul li a.active,
+#cssmenu > ul li a:hover {
+	background-color: #10316b;
+	color: #fdbe34;
+	box-shadow: none;
+}
+#cssmenu > ul li a.active span,
+#cssmenu > ul li a:hover span {
+	color: #fff;	
+}
+#cssmenu > ul li.has-sub {
+	position: relative;
+}
+.has-sub .mob_nav::before {
+	content: '';
+	width: 12px;
+	height: 12px;
+	right: 5%;
+	top: 16px;
+	position: absolute;
+	background: url(../images/sub_menu.png) no-repeat;
+	background-size: 12px 12px;
+	*z-index: 1;
+}
+.active::before {
+	transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+}
+#cssmenu > ul li.has-sub > a::after {
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-top: solid 6px #0652a4;
+	border-left: solid 6px transparent;
+	border-right: solid 6px transparent; 
+	top: 18px;
+	margin: 0 0 0 15px;
+	transition: all ease-in-out 0.5s;
+	-moz-transition: all ease-in-out 0.5s;
+	-ms-transition: all ease-in-out 0.5s;
+	-o-transition: all ease-in-out 0.5s;
+	-webkit-transition: all ease-in-out 0.5s;
+}
+#cssmenu > ul li.has-sub > a.active::after {
+	border-bottom: solid 6px #fff;
+	border-top: solid 0px #fff;
+}
+
+#cssmenu > ul li.has-sub ul li.sub-has-child > a::after {
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-top: solid 6px #fff;
+	border-left: solid 6px transparent;
+	border-right: solid 6px transparent; 
+	top: 8px;
+	margin: 0 0 0 15px;
+	transition: all ease-in-out 0.5s;
+	-moz-transition: all ease-in-out 0.5s;
+	-ms-transition: all ease-in-out 0.5s;
+	-o-transition: all ease-in-out 0.5s;
+	-webkit-transition: all ease-in-out 0.5s;
+}
+#cssmenu > ul li.has-sub ul li.sub-has-child > a.active::after {
+	border-bottom: solid 6px #fff;
+	border-top: solid 0px #fff;
+}
+#cssmenu > ul li.has-sub ul,
+#cssmenu > ul li.has-sub ul li.sub-has-child ul {
+	display: none;
+	position: static;
+	width: 100%;
+	background: #053364;
+	padding: 0px;
+	border: 0 none;
+}
+#cssmenu > ul li.has-sub:hover ul,
+#cssmenu > ul li.has-sub ul li.sub-has-child:hover ul {
+	display: none;
+}
+#cssmenu > ul li.has-sub > ul > li,
+#cssmenu > ul li.has-sub ul li.sub-has-child ul li {
+	display: block !important;
+}
+#cssmenu > ul li.has-sub ul li a {
+	display: block;
+	padding: 0 0 0 20px;
+	color: #fff;
+}
+#cssmenu > ul li.has-sub ul li > ul li a {
+	padding: 0 0 0 40px;
+}
+#cssmenu > ul li.has-sub ul li a:hover  {
+	background-color: transparent;
+	color: #ae285d;
+}
+#cssmenu > ul li a span::after {
+	display: none;
+}
+#cssmenu > ul li.has-sub > a {
+	background-image: none;
+}
+}
+
+@media (min-width: 841px) {
+  #cssmenu > ul li.collapsed {
+    display: inline-block !important;
+    *display: inline;
+    zoom: 1;
+  -webkit-animation-name: slideOutLeft;
+  animation-name: slideOutLeft;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  }
+  #cssmenu > ul ul li.collapsed {
+    display: block !important;
+  -webkit-animation-name: slideOutLeft;
+  animation-name: slideOutLeft;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  }
+#cssmenu > ul li.has-sub.collapsed {
+	position: relative;
+	background: url(../images/sub_menu.png) no-repeat;
+	background-position: 93% 16px;
+	background-size: 12px 12px;
+}
+}
