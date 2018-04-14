@@ -402,7 +402,7 @@
 																<td><img style="width:100px;height:100px;" src="<?php echo base_url();?>uploads/course/<?php echo $post->course_image;?>"></td>
 																<td><?php echo $post->course_rate;?></td>
 																<td><?php echo $post->course_renewal_rate;?></td>
-																<td><?php echo $post->course_language;?></td>
+																<td><?php echo ucfirst($post->language_name);?></td>
 																   <td>  <input name="status-change" id="status_change" data-status="<?php echo $post->course_status;?>" data-id=<?php echo $post->course_id;?> type="checkbox" data-size="small" data-on-color="success" data-off-color="warning" data-on-text="ON" data-off-text="OFF" <?php echo $status_state?> /> </td>
 																   <td>
                                                                    <a  href="<?php echo base_url();?>admin/home/course_edit/<?php echo $post->course_id;?>"><img src="<?php echo base_url();?>assets/images/pencil.png"></a>

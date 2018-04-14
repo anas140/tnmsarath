@@ -300,12 +300,11 @@ class Event_model extends CI_Model {
     //  }
     function display_course()
    {
-       $this->db->select('tbl_languages.language_id,tbl_languages.language_name,tbl_course.*')->from('tbl_course');
-        $this->db->join('tbl_languages','FIND_IN_SET(tbl_languages.language_id,tbl_course.course_language)','left');
-        $this->db->where('course_delete_status',0);
-        $this->db->order_by('course_id', 'desc');
-       $query = $this->db->get();
-      echo $this->db->last_query();exit;
+        $this->db->select('tbl_course.*, tbl_languages.language_name')
+                 ->from('tbl_course')
+                 ->join('tbl_languages', 'FIND_IN_SET(tbl_languages.language_id, tbl_course.course_language)','left');
+        $query = $this->db->get();
+      // echo $this->db->last_query();exit;
        return $query->result() ;
    }
     ///////close display course//////
