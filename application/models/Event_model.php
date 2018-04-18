@@ -300,14 +300,22 @@ class Event_model extends CI_Model {
     //  }
     function display_course()
    {
-        $this->db->select('tbl_course.*, tbl_languages.language_name')
-                 ->from('tbl_course')
-                 ->join('tbl_languages', 'FIND_IN_SET(tbl_languages.language_id, tbl_course.course_language)','left');
-        $query = $this->db->get();
-      // echo $this->db->last_query();exit;
-       return $query->result() ;
+        $query = $this->db->query("select tbl_course.course_id, 
+                    tbl_course.course_name,tbl_course.course_image,tbl_course.course_rate,tbl_course.course_renewal_rate,tbl_course.course_delete_status,tbl_course.course_status,
+                        group_concat(
+                        tbl_languages.language_name
+                        order by locate(concat(',', tbl_languages.language_id, ','), 
+                                        concat(',', tbl_course.course_language, ',')
+                                        )
+                        separator ','
+                    ) as language_name
+                    from tbl_course
+                    oin tbl_languages
+                    on concat(',', tbl_course.course_language, ',') like concat('%,', tbl_languages.language_id, ',%')
+                    group by tbl_course.course_id, tbl_course.course_language");
+    return $query->result();
    }
-    ///////close display course//////
+    /////close display course//////
 	/////get course for course module////
 	   function get_courses()
     {
