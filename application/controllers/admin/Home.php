@@ -675,60 +675,52 @@ class Home extends CI_Controller {
    
     ////close event submit/////
      /////event edit/////////
-    function event_edit($event_id)
-    {
-          $this->admin->start_session();
-        if(!$this->admin->is_loggedin())
-        {
+    function event_edit($event_id) {
+        $this->admin->start_session();
+        if(!$this->admin->is_loggedin()) {
           redirect('admin/home/login');
         }
         $this->load->library('form_validation');
         $this->form_validation->set_rules('event_name', 'Name', 'required');
-        if($this->form_validation->run() == FALSE)
-      {
-        // echo 'trues';exit;
-        // print_r($this->form_validation->display_errors());exit;
-        $data["category"] = $this->event_model->display_category();
-        $data["single_event"]= $this->event_model->single_event_id($event_id);
-        $data["events"] = $this->event_model->display_events();
-        $data['seats'] = $this->event_model->getSeats($event_id);
-        // print_r($data); exit;
-        $this->load->view('admin/add-events',$data);
-      }
-      else
-      {
-        // print_r($_POST);exit;
-        if(!empty($_POST['seat_id'])) {
-            $seats_id = $_POST['seat_id'];
-            $update_seats = count($_POST['seat_id']);
-            // echo $update_seats;exit;
-            $update_data = '';
-            for($i = 0; $i < $update_seats; $i++) {
-                $update_data[$i] = array(
-                    'seat_id' => $_POST['seat_id'][$i],
-                    'seat_type' => $_POST['seat_type'][$i],
-                    'seat_rate' => $_POST['seat_rate'][$i],
-                    'seat_total' => $_POST['no_seat'][$i],
-                );
-            }
-        }
         
-         $this->event_model->update_seats($update_data);
-        if($update_seats < count($_POST['seat_type'])) {
-            $insert_data = '';
-            for($j=0, $i = $update_seats; $i < count($_POST['seat_type']); $i++, $j++ ) {
-                if($_POST['seat_type'][$i]) {
-                    $insert_data[$j] = array(
+        if($this->form_validation->run() == FALSE) {
+            $data["category"] = $this->event_model->display_category();
+            $data["single_event"]= $this->event_model->single_event_id($event_id);
+            $data["events"] = $this->event_model->display_events();
+            $data['seats'] = $this->event_model->getSeats($event_id);
+            $this->load->view('admin/add-events',$data);
+        } else {
+            $update_seats = 0;
+            if(!empty($_POST['seat_id'])) {
+                $seats_id = $_POST['seat_id'];
+                $update_seats = count($_POST['seat_id']);
+                $update_data = '';
+                for($i = 0; $i < $update_seats; $i++) {
+                    $update_data[$i] = array(
+                        'seat_id' => $_POST['seat_id'][$i],
                         'seat_type' => $_POST['seat_type'][$i],
                         'seat_rate' => $_POST['seat_rate'][$i],
                         'seat_total' => $_POST['no_seat'][$i],
-                        'event_id'   => $event_id,
-                    );    
+                    );
                 }
-                
+                $this->event_model->update_seats($update_data);
             }
-         $this->event_model->insert_seats($insert_data);
-        }
+            
+            if($update_seats < count($_POST['seat_type'])) {
+                $insert_data = '';
+                for($j=0, $i = $update_seats; $i < count($_POST['seat_type']); $i++, $j++ ) {
+                    if($_POST['seat_type'][$i]) {
+                        $insert_data[$j] = array(
+                            'seat_type' => $_POST['seat_type'][$i],
+                            'seat_rate' => $_POST['seat_rate'][$i],
+                            'seat_total' => $_POST['no_seat'][$i],
+                            'event_id'   => $event_id,
+                        );    
+                    }
+                    
+                }
+            $this->event_model->insert_seats($insert_data);
+            }
         
 
 

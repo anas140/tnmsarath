@@ -802,8 +802,8 @@ class Event_model extends CI_Model {
         return $this->db->update_batch('tbl_seats', $data, 'seat_id');
 
     }
-    public function insert_seats($tbl_name,$data) {
-        return $this->db->insert_batch($tbl_name, $data);
+    public function insert_seats($data) {
+        return $this->db->insert_batch('tbl_seats', $data);
     }
     public function deleteSeat($id) {
         $this->db->where('seat_id', $id);
